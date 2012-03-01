@@ -63,6 +63,19 @@ grails.hibernate.cache.queries = true
 environments {
     development {
         grails.logging.jul.usebridge = true
+		
+		grails {
+			mail {
+			  host = "smtp.gmail.com"
+			  port = 465
+			  username = ""
+			  password = ""
+			  props = ["mail.smtp.auth":"true",
+					   "mail.smtp.socketFactory.port":"465",
+					   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+					   "mail.smtp.socketFactory.fallback":"false"]
+		 
+		 } }
     }
     production {
         grails.logging.jul.usebridge = false
@@ -91,3 +104,8 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.streamer.security.DomainUser'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.streamer.security.DomainUserDomainRole'
+grails.plugins.springsecurity.authority.className = 'com.streamer.security.DomainRole'
